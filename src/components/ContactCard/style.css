@@ -1,0 +1,12 @@
+.contact-card {
+  padding: 12px 8px;
+  display: flex;
+  align-items: center;
+  background-color: #4b5a80;
+  border-radius: 8px;
+  margin-bottom: 18px;
+}
+
+.contact-card p {
+  margin-left: 12px;
+}

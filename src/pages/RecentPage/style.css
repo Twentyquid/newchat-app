@@ -1,0 +1,6 @@
+.wrapper {
+  overflow-y: scroll;
+  margin: 64px 0;
+  padding: 16px;
+  flex: 1;
+}
