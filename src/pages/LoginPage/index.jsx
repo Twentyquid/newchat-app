@@ -2,7 +2,18 @@ import React from "react";
 import "./style.css";
 import { Link } from "react-router-dom";
 
-function LoginPage() {
+function LoginPage({ supabaseClient, setUser }) {
+  async function handleClick() {
+    const { data, error } = await supabaseClient.auth.signInWithOAuth({
+      provider: "google",
+    });
+    if (data) {
+      setUser(data);
+      console.log(data);
+    } else {
+      console.log(error);
+    }
+  }
   return (
     <div className="login-container">
       <div className="input-wrapper">
@@ -16,7 +27,7 @@ function LoginPage() {
         <div className="line">
           <p>or</p>
         </div>
-        <button>Signup with google</button>
+        <button onClick={handleClick}>Signup with google</button>
       </div>
     </div>
   );
