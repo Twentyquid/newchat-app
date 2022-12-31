@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-function MessageInput({ setMessage, message, supabase }) {
+function MessageInput({ setMessage, message, supabase, user }) {
   async function handleClick() {
     // message.time = new Date().toLocaleTimeString([], {
     //   hour: "2-digit",
@@ -9,6 +9,9 @@ function MessageInput({ setMessage, message, supabase }) {
     // });
     console.log(message);
     console.log("Clicked");
+    message.name = user.full_name;
+    message.email = user.email;
+    message["avatar-url"] = user.avatar_url;
     const { error } = await supabase.from("messages").insert(message);
     console.log("error in inserting is: ", error);
     setMessage({ ...message, info: "" });

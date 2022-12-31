@@ -18,6 +18,8 @@
 
 .avatar {
   margin-top: 24px;
+  border-radius: 100px;
+  overflow: hidden;
 }
 
 .time {

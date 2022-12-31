@@ -8,7 +8,7 @@ export function ChatOtherUser({ data }) {
   return (
     <div className="chatbox">
       <div className="avatar">
-        <img src={avatar} alt="" />
+        <img src={data[0]["avatar-url"]} alt="" />
       </div>
       <div className="message-box">
         {data.map((item) => {
