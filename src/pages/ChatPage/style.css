@@ -7,3 +7,8 @@
   margin-bottom: 67px;
   overflow-y: scroll;
 }
+
+.loading {
+  color: white;
+  font-size: 200px;
+}
