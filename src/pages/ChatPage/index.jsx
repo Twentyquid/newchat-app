@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Appbar from "../../components/Appbar";
 import { ChatSameUser, ChatOtherUser } from "../../components/ChatBox";
 import MessageInput from "../../components/MessageInput";
 import "./style.css";
 
-const messages = [
+const dummy_messages = [
   { name: "david", time: "9:30", info: "how are you doing ?" },
   { name: "david", time: "9:35", info: "did you complete the task" },
   { name: "user", time: "10:50", info: "Doing good how about you ?" },
@@ -18,6 +18,15 @@ const messages = [
 ];
 
 function ChatPage() {
+  const [messages, setMessages] = useState(dummy_messages);
+
+  const handleClick = () => {
+    setMessages([
+      ...messages,
+      { name: "user", time: "10:50", info: "Doing good how about you ?" },
+    ]);
+  };
+
   const createOutputList = (inputList) => {
     let list = [];
     let acc = [];
@@ -37,11 +46,15 @@ function ChatPage() {
     list.push(acc);
     return list;
   };
-  const [message, setMessage] = useState({});
-  let finalMessageList = createOutputList(messages);
+
+  const [finalMessageList, setFinalMessageList] = useState([]);
+
+  useEffect(() => {
+    setFinalMessageList(() => createOutputList(messages));
+  }, [messages]);
   return (
     <div className="container">
-      <MessageInput message={message} setMessage={setMessage} />
+      {/* <MessageInput message={message} setMessage={setMessage} /> */}
       <Appbar />
       <div className="chat-wrapper">
         {finalMessageList.map((item) => {
@@ -52,6 +65,7 @@ function ChatPage() {
           }
         })}
       </div>
+      <button onClick={handleClick}>Add new Item</button>
     </div>
   );
 }
