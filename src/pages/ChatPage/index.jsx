@@ -4,9 +4,6 @@ import { ChatSameUser, ChatOtherUser } from "../../components/ChatBox";
 import MessageInput from "../../components/MessageInput";
 import "./style.css";
 
-let list = [];
-let acc = [];
-
 const messages = [
   { name: "david", time: "9:30", info: "how are you doing ?" },
   { name: "david", time: "9:35", info: "did you complete the task" },
@@ -20,29 +17,34 @@ const messages = [
   { name: "david", time: "9:30", info: "did you complete the task" },
 ];
 
-messages.forEach((item) => {
-  if (!acc[0]) {
-    acc.push(item);
-  } else {
-    if (item.name === acc[acc.length - 1].name) {
-      acc.push(item);
-    } else {
-      list.push(acc);
-      acc = [];
-      acc.push(item);
-    }
-  }
-});
-list.push(acc);
-
 function ChatPage() {
+  const createOutputList = (inputList) => {
+    let list = [];
+    let acc = [];
+    inputList.forEach((item) => {
+      if (!acc[0]) {
+        acc.push(item);
+      } else {
+        if (item.name === acc[acc.length - 1].name) {
+          acc.push(item);
+        } else {
+          list.push(acc);
+          acc = [];
+          acc.push(item);
+        }
+      }
+    });
+    list.push(acc);
+    return list;
+  };
   const [message, setMessage] = useState({});
+  let finalMessageList = createOutputList(messages);
   return (
     <div className="container">
       <MessageInput message={message} setMessage={setMessage} />
       <Appbar />
       <div className="chat-wrapper">
-        {list.map((item) => {
+        {finalMessageList.map((item) => {
           if (item[0].name === "user") {
             return <ChatSameUser data={item} />;
           } else {
