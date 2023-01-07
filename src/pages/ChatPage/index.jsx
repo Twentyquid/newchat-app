@@ -37,7 +37,6 @@ function ChatPage() {
         (payload) => {
           console.log("payload is: ", payload);
           setMessages((value) => [...value, payload.new]);
-          scrollControl.current.scrollIntoView();
         }
       )
       .subscribe();
@@ -68,6 +67,14 @@ function ChatPage() {
   useEffect(() => {
     setFinalMessageList(() => createOutputList(messages));
   }, [messages]);
+
+  useEffect(() => {
+    let windowHeight = window.innerHeight;
+    let scrollPosition = scrollControl.current?.getBoundingClientRect().bottom;
+    if (scrollPosition < windowHeight + 70) {
+      scrollControl.current?.scrollIntoView();
+    }
+  }, [finalMessageList]);
   return (
     <div className="container">
       <MessageInput supabase={supabase} />
