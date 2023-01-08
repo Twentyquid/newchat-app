@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 
 function MessageInput({ supabase, user }) {
@@ -9,6 +9,17 @@ function MessageInput({ supabase, user }) {
     email: user["email"],
     avatar_url: user["avatar_url"],
   });
+
+  useEffect(() => {
+    setMessage({
+      ...message,
+      name: user["full_name"],
+      info: "",
+      email: user["email"],
+      avatar_url: user["avatar_url"],
+    });
+  }, [user]);
+
   console.log("Initial message is: ", message);
   async function handleClick() {
     console.log("Clicked");

@@ -12,7 +12,11 @@ export function ChatOtherUser({ data }) {
       </div>
       <div className="message-box">
         {data.map((item) => {
-          time = item.time;
+          time = new Date(item.time).toLocaleTimeString([], {
+            hour: "numeric",
+            minute: "numeric",
+            hour12: true,
+          });
           if (!timeStack[0]) {
             timeStack.push(time);
           } else {
@@ -26,7 +30,7 @@ export function ChatOtherUser({ data }) {
           }
           return (
             <>
-              <p className="time">{time + " PM"}</p>
+              <p className="time">{time}</p>
               <p className="message">{item.info}</p>
             </>
           );
@@ -43,7 +47,11 @@ export function ChatSameUser({ data }) {
     <div className="chatbox-other">
       <div className="message-box-other">
         {data.map((item) => {
-          time = item.time;
+          time = new Date(item.time).toLocaleTimeString([], {
+            hour: "numeric",
+            minute: "numeric",
+            hour12: true,
+          });
           if (!timeStack[0]) {
             timeStack.push(time);
           } else {
@@ -57,7 +65,7 @@ export function ChatSameUser({ data }) {
           }
           return (
             <>
-              <p className="time-other">{time + " PM"}</p>
+              <p className="time-other">{time}</p>
               <p className="message-other">{item.info}</p>
             </>
           );
