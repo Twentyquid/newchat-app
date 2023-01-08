@@ -23,7 +23,7 @@ function ChatPage() {
     const {
       data: { user },
     } = await supabase.auth.getUser();
-    console.log("The user data is: ", user);
+    // console.log("The user data is: ", user);
     if (user) {
       setUserData(user.user_metadata);
     }

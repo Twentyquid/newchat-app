@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
 // import { Link } from "react-router-dom";
 import { createClient } from "@supabase/supabase-js";
@@ -11,6 +11,11 @@ const PUBLIC_ANON_KEY = process.env.REACT_APP_PUBLIC_ANON_KEY;
 const supabase = createClient(API_URL, PUBLIC_ANON_KEY);
 
 function LoginPage() {
+  useState(() => {
+    supabase.auth.onAuthStateChange((event, session) => {
+      if (event === "SIGNED_IN") console.log(session);
+    });
+  }, []);
   return (
     <div className="login-container">
       <div className="input-wrapper">
@@ -18,6 +23,7 @@ function LoginPage() {
           supabaseClient={supabase}
           appearance={{ theme: ThemeSupa }}
           providers={["google"]}
+          redirectTo="/chat"
           theme="dark"
         />
       </div>

@@ -12,7 +12,7 @@ function Appbar() {
         </Link>
       </div>
       <div className="user-status">
-        <p className="username">John Doe Hernandes</p>
+        <p className="username">Global Chat</p>
         <p>online</p>
       </div>
     </div>

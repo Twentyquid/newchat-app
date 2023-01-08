@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./style.css";
 
 function MessageInput({ supabase, user }) {
-  console.log("user data inside MessageInput is: ", user);
+  // console.log("user data inside MessageInput is: ", user);
   const [message, setMessage] = useState({
     name: user["full_name"],
     info: "",
@@ -20,10 +20,10 @@ function MessageInput({ supabase, user }) {
     });
   }, [user]);
 
-  console.log("Initial message is: ", message);
+  // console.log("Initial message is: ", message);
   async function handleClick() {
-    console.log("Clicked");
-    console.log("message after clicking send is: ", message);
+    // console.log("Clicked");
+    // console.log("message after clicking send is: ", message);
     if (message.info !== "" && message.info.trim() !== "") {
       const { error } = await supabase.from("messages").insert(message);
       if (error) {
