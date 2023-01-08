@@ -1,14 +1,12 @@
 import React from "react";
 import "./style.css";
-import avatar from "../../images/avatar.png";
-
 export function ChatOtherUser({ data }) {
   let timeStack = [];
   let time = "";
   return (
     <div className="chatbox">
       <div className="avatar">
-        <img src={avatar} alt="" />
+        <img src={data[0]["avatar_url"]} alt="" />
       </div>
       <div className="message-box">
         {data.map((item) => {

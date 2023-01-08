@@ -24,11 +24,13 @@ function MessageInput({ supabase, user }) {
   async function handleClick() {
     console.log("Clicked");
     console.log("message after clicking send is: ", message);
-    const { error } = await supabase.from("messages").insert(message);
-    setMessage({ ...message, info: "" });
-    if (error) {
-      console.log(error);
+    if (message.info !== "" && message.info.trim() !== "") {
+      const { error } = await supabase.from("messages").insert(message);
+      if (error) {
+        console.log(error);
+      }
     }
+    setMessage({ ...message, info: "" });
   }
   return (
     <div className="message-input">
