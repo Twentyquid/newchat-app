@@ -71,8 +71,8 @@ function ChatPage() {
   useEffect(() => {
     let windowHeight = window.innerHeight;
     let scrollPosition = scrollControl.current?.getBoundingClientRect().bottom;
-    if (scrollPosition < windowHeight + 70) {
-      scrollControl.current?.scrollIntoView();
+    if (scrollPosition < windowHeight + 300) {
+      scrollControl.current?.scrollIntoView({ behavior: "smooth" });
     }
   }, [finalMessageList]);
   return (
