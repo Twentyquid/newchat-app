@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import "./style.css";
 
-function MessageInput({ supabase }) {
+function MessageInput({ supabase, user }) {
+  console.log("user data inside MessageInput is: ", user);
   const [message, setMessage] = useState({
-    name: "user",
+    name: user["full_name"],
     info: "",
-    email: "tardigrade0801@gmail.com",
-    avatar_url:
-      "https://lh3.googleusercontent.com/a/AEdFTp6l6kKBtjOrVPEDDNpg5Gi-naqiZwvw6JXDmXzK=s96-c",
+    email: user["email"],
+    avatar_url: user["avatar_url"],
   });
+  console.log("Initial message is: ", message);
   async function handleClick() {
-    console.log(message);
     console.log("Clicked");
+    console.log("message after clicking send is: ", message);
     const { error } = await supabase.from("messages").insert(message);
     setMessage({ ...message, info: "" });
     if (error) {
