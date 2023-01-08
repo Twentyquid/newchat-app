@@ -1,0 +1,54 @@
+.chatbox {
+  display: flex;
+  margin-bottom: 24px;
+}
+
+.chatbox-other {
+  margin-bottom: 24px;
+}
+
+.chatbox img {
+  width: 37px;
+  height: 37px;
+}
+
+.message-box {
+  margin-left: 8px;
+}
+
+.avatar {
+  margin-top: 24px;
+}
+
+.time {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #868686;
+}
+
+.message {
+  padding: 16px;
+  width: fit-content;
+  background-color: #2d3bff;
+  max-width: 80vw;
+  margin-bottom: 8px;
+  border-radius: 4px 16px 16px;
+}
+
+.message-other {
+  padding: 16px;
+  margin-left: auto;
+  width: fit-content;
+  background-color: #e9ff8f;
+  color: #111111;
+  max-width: 80vw;
+  margin-bottom: 8px;
+  border-radius: 16px 4px 16px 16px;
+}
+
+.time-other {
+  margin-bottom: 8px;
+  font-size: 14px;
+  text-align: right;
+  color: #868686;
+}

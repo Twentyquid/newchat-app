@@ -1,0 +1,14 @@
+.chat-wrapper {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  padding-top: 60px;
+  margin-bottom: 67px;
+  overflow-y: scroll;
+}
+
+.loading {
+  color: white;
+  font-size: 200px;
+}
