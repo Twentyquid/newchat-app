@@ -8,9 +8,9 @@ import RecentPage from "../RecentPage";
 function HomePage() {
   return (
     <div>
-      <SearchBar />
-      <Navbar />
       <div className="container">
+        <SearchBar />
+        <Navbar />
         <Routes>
           <Route path="/" element={<RecentPage />} />
           <Route path="/contacts" element={<ContactsPage />} />
